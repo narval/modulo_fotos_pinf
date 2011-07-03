@@ -4,7 +4,7 @@
  * Clase AlbumMapper (Singleton)
  * Gestiona el acceso a la Base de Datos
  * del modulo de Fotos.
- * version 1.0
+ * version 1.2
  */
 // Falta hacer los updates
 class AlbumMapper {
@@ -61,8 +61,9 @@ class AlbumMapper {
     }
     /**
      * Función que determina si existe un Perfil cuyo ID es $usuario
-     * y posee un Album con nombre $nombre
-     * si 
+     * y posee un Album con nombre $nombre.
+     * Devuelve TRUE si existe el Album, FALSE si no existe
+     * y -1 si existió algun error. 
      * @param string $nombre
      * @param string $usuario
      * @return int 
@@ -84,6 +85,49 @@ class AlbumMapper {
             return TRUE;
         } 
     }
+    /**
+     * Función que devuelve un array que contiene los ID de los albumes
+     * de un Perfil cuyo $user (nombre de usuario) es dado.
+     * Devuelve NULL si existió algun error.
+     * @param string $user
+     * @return array() 
+     */
+    public function getIdsAlbumPerfil($user){
+        DataBase::singleton();
+        $sqlQuery= "SELECT ID_Album FROM pinf.albumesdeperfil
+                    WHERE ID_Perfil='$user'";
+        $queryResult = mysql_query($sqlQuery);
+         if (!queryResult) {
+            RETURN NULL;
+        }
+        $idsAlbum= array();
+        while ($row = mysql_fetch_array($queryResult, MYSQL_ASSOC)) {
+            $idsAlbum[]=$row["ID_Album"];
+        }
+        RETURN $idsAlbum;
+    }
+    
+    /**
+     * Función que recibe un $id de album y devuelve el nombre del album 
+     * asociado con ese $id.
+     * Devuelve NULL si existio algun error o no existe el $id.
+     * @param int $id
+     * @return string 
+     */
+    public function getNombreAlbumPerfl($id){
+        DataBase::singleton();
+        $sqlQuery= "SELECT nombre FROM pinf.Album
+                    WHERE ID='$id'";
+        $queryResult = mysql_query($sqlQuery);
+         if (!queryResult) {
+            RETURN NULL;
+        } 
+        if(!($row=mysql_fetch_row($queryResult))){
+            RETURN NULL;
+        }
+        RETURN $row[0];
+    }
+    
     
     public function saveAlbumGrupo($nombre, $lugar, $idgrupo) {
         DataBase::singleton();
