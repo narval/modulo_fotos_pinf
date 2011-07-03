@@ -3,7 +3,7 @@
 /**
  * Description of Album_Perfil
  *
- * @author Jennifer
+ * version 1.2
  */
 class Album_Perfil extends ClassAlbum {
     
@@ -20,6 +20,16 @@ class Album_Perfil extends ClassAlbum {
       $this->fotos= array();
     }
     }
+    
+    public static function getListaAlbums($user){
+       /**
+        * Esta funcion deberia devolver la lista de albumes 
+        * para ello usa los metodos de la fachadaBD
+        * primero obtiene la lista getIdsAlbumPerfil()
+        * y con cada id devuelto pide el nombre del album
+        */
+    }
+
     /**
      * Función que crea un Album asociado a un Perfil
      * devuelve TRUE si el Album ha sido creado.
