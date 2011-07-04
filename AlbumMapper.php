@@ -1,3 +1,4 @@
+
 <?php
 
 /**
@@ -116,7 +117,7 @@ class AlbumMapper {
      */
     public function getNombreAlbumPerfl($id){
         DataBase::singleton();
-        $sqlQuery= "SELECT nombre FROM pinf.Album
+        $sqlQuery= "SELECT nombre FROM pinf.album
                     WHERE ID='$id'";
         $queryResult = mysql_query($sqlQuery);
          if (!queryResult) {

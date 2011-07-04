@@ -20,14 +20,28 @@ class Album_Perfil extends ClassAlbum {
       $this->fotos= array();
     }
     }
-    
+    /**
+     * Devuelve un arreglo asociativo con el id y el nombre de cada album
+     * dado el nombre de un usuario.
+     * Devuelve NULL si existió algun error.
+     * @param string $user 
+     * @return array() $idsNombres
+     */
     public static function getListaAlbums($user){
-       /**
-        * Esta funcion deberia devolver la lista de albumes 
-        * para ello usa los metodos de la fachadaBD
-        * primero obtiene la lista getIdsAlbumPerfil()
-        * y con cada id devuelto pide el nombre del album
-        */
+        $A=AlbumMapper::getInstance();
+        $idsNombres=NULL;
+        // Obtener la lista de id's de los albumes cuyo dueño es $user
+        if($listaIds= $A->getIdsAlbumPerfil($user)){
+            $idsNombres=array();
+            for($i=0; $i<count($listaIds);$i++){
+                $id= $listaIds[$i];
+                $idsNombres[$id]=
+                            $A->getNombreAlbumPerfil($id);
+                if(!($idsNombres[$id]))
+                    RETURN NULL;
+            }
+        }
+        RETURN $idsNombres;
     }
 
     /**
@@ -37,7 +51,7 @@ class Album_Perfil extends ClassAlbum {
      * @return boolean 
      */    
     public function crearAlbum($user){
-        $A=AlbumMapper::getinstance();
+        $A=AlbumMapper::getInstance();
         $ok=0;
         // Si la persona ya tiene un Album con el nombre dado, concatenarle "(1)"
         while(($ok=($A::existeAlbumPerfil(this.nombre,$user))) && $ok!=-1){

@@ -8,8 +8,8 @@ class Perfil {
     private $apellido;
     private $correo;
     private $fecha_nac;
-    private $listaFotos[];
-    private $foto_act
+    private $listaFotos= array();
+    private $foto_act;
 
     public function __construct($username) {
         $this->username = $username;
@@ -38,9 +38,9 @@ class Perfil {
         return FALSE;
     }
 
-    public function crearAlbum($nombre, $lugar)  {
+    /*public function crearAlbum($nombre, $lugar)  {
        listaFotos[foto_act] = Albm_Perfil($nombre, $lugar);    
-    }
+    }*/
 
     public function getUsername() {
         return $this->username;

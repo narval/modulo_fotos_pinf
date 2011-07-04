@@ -19,6 +19,18 @@ class FotosFachada {
         }
         return self::$instance;
     }
+    /**
+     * Función que devuelve un array asociativo con los id's y nombres 
+     * de los albumes dado el $user de un Perfil.
+     * Si existe algún error devuelve NULL.
+     * @param string $user
+     * @return array() 
+     */
+    public function getNombresAlbumPerfil($user){
+        if($lista=Album_Perfil::getListaAlbums($user))
+                RETURN $lista;
+        RETURN NULL;
+    }
     
 public function crearAlbumPerfil($nombre,$lugar,$usuario){
     $perfil= new Perfil($usuario);
