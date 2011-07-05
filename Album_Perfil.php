@@ -1,5 +1,5 @@
 <?php
-
+require_once('AlbumMapper.php');
 /**
  * Description of Album_Perfil
  *
