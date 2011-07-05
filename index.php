@@ -10,7 +10,7 @@
         $lista=$_GET['lista'];
         if(!isset($lista))
         echo "<html><head><meta http-equiv='refresh' content='0; URL=./FotosController.php'></head></html>";
-        echo "lista lista";
+        echo "'$lista[1]'";
         
         ?>
     </body>
