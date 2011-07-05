@@ -9,7 +9,6 @@
         <?php
         echo "<html><head><meta http-equiv='refresh' content='0; URL=./FotosController.php'></head></html>";
         
-        
         ?>
     </body>
 </html>

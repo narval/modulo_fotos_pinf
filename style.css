@@ -1,0 +1,406 @@
+
+/*
+Hoja de Estilos para Cacatúa
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #FFFFFF url(images/img01.jpg) repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #303030;
+}
+
+h1, h2, h3 {
+	margin: 0;
+	padding: 0;
+	font-weight: normal;
+	color: #303030;
+}
+
+h1 {
+	font-size: 2em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
+p, ul, ol {
+	margin-top: 0;
+	line-height: 180%;
+}
+
+ul, ol {
+}
+
+.button {
+    border: 1px solid #006;
+    font: normal 13px Verdana;
+    background:#FFD700;
+} 
+.button:hover {
+    border: 1px solid #006;
+    background:	#F0E68C;
+    font: normal 13px Verdana;
+}
+
+a {
+	text-decoration: none;
+	color: #121212;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+img.border {
+	border: 6px solid #E1F1F6;
+}
+
+img.alignleft {
+	float: left;
+	margin-right: 25px;
+}
+
+img.alignright {
+	float: right;
+}
+
+img.aligncenter {
+	margin: 0px auto;
+}
+
+#wrapper {
+	background: url(images/img02.jpg) no-repeat center top;
+}
+
+/* Estilo para el encabezado */
+
+#encab {
+	width: 1000px;
+	height: 140px;
+	margin: 0 auto;
+}
+
+/* Estilo para el logo */
+
+#logo {
+	float: left;
+	margin: 0;
+	padding: 20px 0px 0px 0px;
+	color: #FFFFFF;
+}
+
+#logo h1, #logo p {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+#logo h1 {
+	float: left;
+	margin: 0px;
+	padding: 50px 0px 0px 30px;
+	letter-spacing: -1px;
+	text-transform: lowercase;
+	text-shadow: #808080 -1px 1px 2px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 64px;
+}
+
+#logo p {
+	margin: 0;
+	padding: 90px 0 0 15px;
+	text-shadow: #808080 -1px 1px 2px;
+	font: normal 18px Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+}
+
+#logo a {
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+/* Estilo para la busqueda */
+
+#busq {
+	float: right;
+	width: 280px;
+	height: 100px;
+	padding: 0;
+}
+
+#busq form {
+	height: 41px;
+	margin: 0;
+	padding: 100px 0 0 30px;
+}
+
+#busq fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#busq-texto {
+	width: 233px;
+	height: 30px;
+	padding: 0px 10px 0px 10px;
+	border: none;
+	background: url(images/img09.jpg) no-repeat left top;
+	text-transform: lowercase;
+	font: normal 11px Arial, Helvetica, sans-serif;
+	color: #303030;
+}
+
+#busq-enviar {
+	display: none;
+}
+
+/* Menu */
+
+#menu {
+	width: 960px;
+	height: 50px;
+	margin: 0 auto;
+	padding: 5px 0px 0px 0px;
+}
+
+#menu ul {
+	margin: 0;
+	padding: 0px 0px 0px 4px;
+	list-style: none;
+	line-height: normal;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu a {
+	display: block;
+	height: 25px;
+	margin: 0px 2px 0px 15px;
+	padding: 10px 15px 0px 15px;
+	background: url(images/img04.gif) no-repeat left 14px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #121212;
+	border: none;
+}
+
+#menu .current_page_item a {
+}
+
+#menu a:hover {
+	text-decoration: none;
+}
+
+/* Pagina */
+
+#pag {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 0;
+}
+
+#pag-bgarriba {
+}
+
+#pag-bgabajo {
+	margin: 0px;
+	padding: 60px 30px 0px 30px;
+}
+
+/* Estilo del contenido */
+
+#contenido {
+	float: left;
+	width: 540px;
+	padding: 30px 20px 0px 0px;
+}
+
+.post {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
+
+.post .title {
+	letter-spacing: -1px;
+}
+
+.post .title a {
+	color: #303030;
+	border: none;
+}
+
+.post .meta {
+	padding-bottom: 5px;
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: italic;
+}
+
+.post .meta a {
+}
+
+.post .entry {
+	text-align: justify;
+	margin-bottom: 25px;
+	padding: 10px 0px 0px 0px;
+}
+
+.links {
+	display: block;
+	width: 96px;
+	padding: 2px 0px 2px 0px;
+	background: #A53602;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+/* Barra lateral */
+
+#barlateral {
+	float: right;
+	width: 330px;
+	padding: 40px 0px 0px 0px;
+}
+
+#barlateral ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#barlateral li {
+	margin: 0;
+	padding: 0;
+}
+
+#barlateral li ul {
+	margin: 0px 15px;
+	padding-bottom: 30px;
+}
+
+#barlateral li li {
+	padding-left: 15px;
+	line-height: 35px;
+	background: url(images/img07.gif) no-repeat left 14px;
+}
+
+#barlateral li li span {
+	display: block;
+	margin-top: -20px;
+	padding: 0;
+	font-size: 11px;
+	font-style: italic;
+}
+
+#barlateral h2 {
+	height: 38px;
+	margin-bottom: 20px;
+	padding: 12px 0 0 15px;
+	letter-spacing: -1px;
+	font-size: 24px;
+}
+
+#barlateral p {
+	margin: 0 0px;
+	padding: 0px 20px 20px 20px;
+	text-align: justify;
+}
+
+#barlateral a {
+	border: none;
+}
+
+#barlateral a:hover {
+	text-decoration: underline;
+}
+
+/* Estilo del calendario */
+
+#calendario {
+}
+
+#calendario caption {
+	padding-bottom: 5px;
+	font-weight: bold;
+}
+
+#calendario table {
+	width: 100%;
+	border-collapse: collapse;
+	border-right: 1px solid #F5F2EF;
+}
+
+#calendario thead th {
+	padding: 5px 0;
+	text-align: center;
+	border-top: 1px solid #F5F2EF;
+	border-left: 1px solid #F5F2EF;
+	background: #F5F2EF;
+}
+
+#calendario tbody td {
+	padding: 5px 0;
+	text-align: center;
+	border-top: 1px solid #F5F2EF;
+	border-left: 1px solid #F5F2EF;
+}
+
+#calendario tfoot td {
+	padding: 5px;
+}
+
+#calendario tfoot #prox {
+	text-align: right;
+}
+
+#calendario #hoy {
+	background: #FFFFC2;
+}
+
+/* pie de pagina */
+
+#pie-wrapper {
+	background: url(images/img01.jpg) repeat-x left bottom;
+}
+
+#pie {
+	width: 1000px;
+	height: 300px;
+	margin: -80px auto 0px auto;
+	background: url(images/img08.jpg) no-repeat center top;
+}
+
+#pie p {
+	margin: 0;
+	padding-top: 180px;
+	line-height: normal;
+	font-size: 14px;
+	text-align: center;
+}
+
+#pie a {
+}
+
+.movido {
+position: relative;
+top: 15px;
+}

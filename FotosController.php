@@ -8,7 +8,7 @@
 session_name('usuario');
 session_start();
 // Por ahora supongamos que solo existe perfil
-$SESSION['usuario']= 'yo';
+$SESSION['usuario']= 'simon';
 $F=FotosFachada::getInstance();
 $lista=$F->getNombresAlbumPerfil($SESSION['usuario']);
 echo "<meta http-equiv='refresh' content='0; URL=./index.php?lista=".$lista."'>";
