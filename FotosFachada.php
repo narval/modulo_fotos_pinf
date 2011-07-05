@@ -1,5 +1,6 @@
 <?php
 require_once("ClassAlbum.php");
+require_once("Album_Perfil.php");
 /*
  * Fachada logica para el modulo Gestion de Fotos
  * Version 1.0

@@ -7,18 +7,39 @@
  * del modulo de Fotos.
  * version 1.2
  */
+require_once('DataBase.php');
 // Falta hacer los updates
 class AlbumMapper {
 
     private static $instance;
-
-    private function __construct() {
-        
-    }
-    /**
-     * 
+    
+     /**
+     * Para evitar que instancien esta clase, se crea un constructor privado
+     * (Tomado del manual de php:
+     *             http://php.net/manual/en/language.oop5.patterns.php)
      */
-    public static function getInstance() { //metodo Singleton
+    private function __construct() {
+
+    }
+
+    /**
+     * Evita que los usuarios clonen el objeto
+     * (Tomado del manual de php:
+     *             http://php.net/manual/en/language.oop5.patterns.php)
+     */
+    public function __clone() {
+        trigger_error('No se permite la clonación de este objeto.', E_USER_ERROR);
+    }
+    
+    /**
+     * Método que garantiza que sólo habrá una instancia de esta clase, con los
+     * dos métodos anteriores junto con este, se crea un "Singleton Pattern"
+     * con lo cual emulamos lo que sería una clase estática (lo que en java
+     * hacemos con "public static class blah {}").
+     * (Tomado del manual de php:
+     *             http://php.net/manual/en/language.oop5.patterns.php)
+     */
+    public static function getInstance() { 
         if (!isset(self::$instance)) {
             $c = __CLASS__;
             self::$instance = new $c;
@@ -35,7 +56,7 @@ class AlbumMapper {
      * @return int idalbum
      */
     public function saveAlbumPerfil($nombre, $lugar, $usuario) {
-        DataBase::singleton();
+        DataBase::getInstance();
         $idalbum = 0;
         // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
@@ -70,7 +91,7 @@ class AlbumMapper {
      * @return int 
      */
     public function existeAlbumPerfil($nombre,$usuario){
-        DataBase::singleton();
+        DataBase::getInstance();
         $sqlQuery="SELECT A.ID_Album 
                    FROM A pinf.Album, AP pinf.albumesdeperfil
                    WHERE A.ID=A.ID_Album AND '$user'=AP.ID_Perfil
@@ -94,11 +115,11 @@ class AlbumMapper {
      * @return array() 
      */
     public function getIdsAlbumPerfil($user){
-        DataBase::singleton();
+        DataBase::getInstance();
         $sqlQuery= "SELECT ID_Album FROM pinf.albumesdeperfil
                     WHERE ID_Perfil='$user'";
         $queryResult = mysql_query($sqlQuery);
-         if (!queryResult) {
+         if (!$queryResult) {
             RETURN NULL;
         }
         $idsAlbum= array();
@@ -115,12 +136,12 @@ class AlbumMapper {
      * @param int $id
      * @return string 
      */
-    public function getNombreAlbumPerfl($id){
-        DataBase::singleton();
+    public function getNombreAlbumPerfil($id){
+        DataBase::getInstance();
         $sqlQuery= "SELECT nombre FROM pinf.album
                     WHERE ID='$id'";
         $queryResult = mysql_query($sqlQuery);
-         if (!queryResult) {
+         if (!$queryResult) {
             RETURN NULL;
         } 
         if(!($row=mysql_fetch_row($queryResult))){
@@ -131,7 +152,7 @@ class AlbumMapper {
     
     
     public function saveAlbumGrupo($nombre, $lugar, $idgrupo) {
-        DataBase::singleton();
+        DataBase::getInstance();
 // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
                 "('$nombre','$lugar')";
@@ -158,7 +179,7 @@ class AlbumMapper {
     }
 
     public function saveAlbumEvento($nombre, $lugar, $idevento) {
-        DataBase::singleton();
+        DataBase::getInstance();
 // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
                 "('$nombre','$lugar')";
@@ -185,7 +206,7 @@ class AlbumMapper {
     }
 
     public function saveAlbumNoticia($nombre, $lugar, $idnoticia) {
-        DataBase::singleton();
+        DataBase::getInstance();
 // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
                 "('$nombre','$lugar')";
@@ -212,7 +233,7 @@ class AlbumMapper {
     }
 
     public function saveFotoMuro($idalbum, $nombre, $imagen, $idmuro) {
-        DataBase::singleton();
+        DataBase::getInstance();
 // Agregar la Foto en la tabla Foto de la BD 
         $sqlQuery = "INSERT INTO pinf.foto(album,nombre,imagen) VALUES" .
                 "('$idalbum','$nombre','$imagen')";
