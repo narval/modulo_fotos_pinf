@@ -35,15 +35,59 @@
 	      </ul>
 	    </div>
 	    <!-- fin #menu -->
-	    <div id="contenido">
-	      <h2 class="title"><a href="http://localhost:8080/web/fotos.html">Fotos </a></h2>
-	      <div class="post">
-		<h3 class="title"><a href="http://localhost:8080/web/album.html">"Nombre del √Ålbum" </a></h3>
-		<p class="meta">√Ålbum: <a href="http://localhost:8080/web/enConstruccion.html">"Nuemro de fotos"</a> 
+            <div id="contenido">
+                <h2 class="title"><a href="a">Albumes </a></h2>
+               <div class="post">
+            <?php
+                require_once('FotosController.php');             
+                $tam = count($lista);
+                if($tam == 0){
+                    echo "hola";
+                } else{
+                    echo "<ul>";
+                    foreach($lista as $j){
+                        echo "<li><a  href=";
+                        echo "albumes.php";
+                        echo ">";
+                        echo $j;
+                        echo "</a></li>";
+                     }
+                     echo "</ul>";
+                            /*
+                    echo "<table>";
+                    for($i = 1; $i <= ($tam / 7) + 1; $i++){
+                        echo "<tr>";
+                        if($i * 7 < $tam){
+                            for($j = 1; $j <= 7; $j++){
+                                echo "<td>";
+                                echo $lista[(($j - 1) * 7) + $i][2];
+                                echo "</td>";
+                            }      
+                        } else {
+                            for($j = 1; $j <= ($tam % 7); $j++){
+                                echo "<td>";
+                                echo $lista[(($i - 1) * 7) + $j][2];
+                                echo "</td>";
+                            }
+                            
+                        }
+                        echo "</tr>";
+                    }
+                    echo "</table>";
+                            */
+                }
+            ?> 
+               </div>
+            
+            <!--
+	    
+	      
+	      
+		<h3 class="title"><a href="http://localhost:8080/web/album.html">"Nombre del √?lbum" </a></h3>
+		<p class="meta">√?lbum: <a href="http://localhost:8080/web/enConstruccion.html">"Nuemro de fotos"</a> 
 		  &nbsp;&bull;&nbsp; <a href="#" class="comments">Fecha de creacion: 04/04/04</a></p>
 		
-		<table>
-		<tr>
+		
 		  <td> <img src="images/chavo.jpg" width="80" height="80" alt="" /></td>
 		  <td> <img src="images/fotito1.jpg" width="80" height="80" alt="" /></td>
 		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
@@ -82,7 +126,7 @@
 	      </table>
 			<p> Anteriores&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Siguientes </p>
-		  <h4 class="title"> √Ålbunes: </h4>
+		  <h4 class="title"> √?lbunes: </h4>
 			<table>
 				<tr>
 				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
@@ -90,7 +134,7 @@
 				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
 				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
 				<td><img src="images/folder1.png" width="100" height="100" alt="algo"/></td>
-				<td> M√°s √Ålbunes </td>
+				<td> M√°s √?lbunes </td>
 				</tr>
 			</table>
 		<div class="entry">
@@ -100,6 +144,7 @@
 	      </div>
 	      
 	      <div style="clear: both;">&nbsp;</div>
+            -->
 	    </div>
 	    <!-- fin #content -->
 	    <div id="barlateral">
@@ -107,15 +152,15 @@
 		<li>
 		  <h2>Opciones</h2>
 		  <ul>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Crear √Ålbum</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del √Ålbum</a></li>
+		    <li><a href="http://localhost:8080/web/enConstruccion.html">Crear √?lbum</a></li>
+		    <li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del √?lbum</a></li>
 			<li><a href="http://localhost:8080/web/enConstruccion.html">Agregar fotos</a></li>
 		    <li><a href="http://localhost:8080/web/enConstruccion.html">Borrar foto</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Descargar √Ålbum </a></li>
+		    <li><a href="http://localhost:8080/web/enConstruccion.html">Descargar √?lbum </a></li>
 		  </ul>
 		</li>
 		<li>
-		  <h2>Personas en este √Ålbum</h2>
+		<!--  <h2>Personas en este √?lbum</h2> 
 			<div>
 				<ul>
 				 <li><a href="http://localhost:8080/web/enConstruccion.html">Mar√≠a Antonieta De Las Nieves</a></li>
@@ -125,6 +170,7 @@
 				 <li><a href="http://localhost:8080/web/enConstruccion.html">Ver m√°s personas</a></li>
 				</ul>
 			</div>
+                  -->
 	    </div>
 	    <!-- fin #barlateral -->
 	    <div style="clear: both;">&nbsp;</div>

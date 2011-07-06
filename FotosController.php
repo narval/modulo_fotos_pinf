@@ -1,7 +1,7 @@
 <?php
 include_once('FotosFachada.php');
 /**
- * Controlador para manejar la visualizaciÃ³n de los albumes
+ * Controlador para manejar la visualización de los albumes
  * 
  * version 1.0
  */
@@ -11,6 +11,5 @@ session_start();
 $SESSION['usuario']= 'simon';
 $F=FotosFachada::getInstance();
 $lista=$F->getNombresAlbumPerfil($SESSION['usuario']);
-echo "hola!!";
-echo "<meta http-equiv='refresh' content='0; URL=./index.php?lista=".$lista."'>";
+//echo "<meta http-equiv='refresh' content='0; URL=./index.php?lista=".$lista."'>";
 ?>

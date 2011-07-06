@@ -1,5 +1,6 @@
 <?php
 require_once('AlbumMapper.php');
+require_once('ClassAlbum.php');
 /**
  * Description of Album_Perfil
  *
@@ -23,14 +24,14 @@ class Album_Perfil extends ClassAlbum {
     /**
      * Devuelve un arreglo asociativo con el id y el nombre de cada album
      * dado el nombre de un usuario.
-     * Devuelve NULL si existiÃ³ algun error.
+     * Devuelve NULL si existió algun error.
      * @param string $user 
      * @return array() $idsNombres
      */
     public static function getListaAlbums($user){
         $A=AlbumMapper::getInstance();
         $idsNombres=NULL;
-        // Obtener la lista de id's de los albumes cuyo dueÃ±o es $user
+        // Obtener la lista de id's de los albumes cuyo dueño es $user
         if($listaIds= $A->getIdsAlbumPerfil($user)){
             $idsNombres=array();
             for($i=0; $i<count($listaIds);$i++){
@@ -45,7 +46,7 @@ class Album_Perfil extends ClassAlbum {
     }
 
     /**
-     * FunciÃ³n que crea un Album asociado a un Perfil
+     * Función que crea un Album asociado a un Perfil
      * devuelve TRUE si el Album ha sido creado.
      * @param string $user
      * @return boolean 
