@@ -36,13 +36,21 @@
 				</div>
 				<!-- fin #menu -->
 				<div id="contenido">
-						<h2 class="title"><a href="http://localhost:8080/web/fotos.html">Fotos </a></h2>
-					<div class="post">
-						<h3 class="title"><a href="http://localhost:8080/web/album.html">"Montaje" </a></h3>
-						<p class="meta">Álbum: <a href="http://localhost:8080/web/enConstruccion.html">"El Chavo"</a> 
-							&nbsp;&bull;&nbsp; <a href="#" class="comments">Fecha de inserción: 06/06/06</a></p>
+                                    <?php
+						$numero = count($_GET);
+                                                $tags = array_keys($_GET);// obtiene los nombres de las varibles
+                                                $valores = array_values($_GET);// obtiene los valores de las varibles
+
+                                                // crea las variables y les asigna el valor
+                                                for($i=0;$i<$numero;$i++){
+                                                $$tags[$i]=$valores[$i];
+                                                }
+                                              echo "<h2 class=title>";
+                                              echo $nombre;
+                                              echo "</h2>";
 						
-							<img src="images/chavo.jpg" width="550" height="550" alt="" class="alignleft border" />
+							echo "<img src=fotos/$id.jpg width=550 height=550 alt= class=alignleft border />";
+                                    ?>
 							<div class="movido">
 								<h4 class="title"> Personas que aparecen en esta foto: </h4>
 							</div>
@@ -90,6 +98,7 @@
 				</div>
 				<!-- fin #content -->
 				<div id="barlateral">
+                                    <!--
 					<ul>
 						<li>
 							<h2>Opciones</h2>
@@ -143,7 +152,7 @@
 					</br>
 					<a href="http://localhost:8080/web/enConstruccion.html">Ver mas fotos de este álbum</a>
                                         
-                                        
+                                        -->
 				</div>
 				<!-- fin #barlateral -->
 				<div style="clear: both;">&nbsp;</div>

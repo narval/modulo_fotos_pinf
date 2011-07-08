@@ -39,9 +39,9 @@
                 <h2 class="title"><a href="a">Albumes </a></h2>
                <div class="post">
             <?php
-            //session_start();
-            
-                require_once('FotosController.php');             
+            session_start();
+            $lista= $_SESSION["fotos"];
+                //require_once('FotosController.php');             
                 $tam = count($lista);
                 
                 if($tam == 0){
@@ -58,7 +58,7 @@
                         echo "<table>";
                         echo "<tr>"; // fila imagen
                                 echo "<td>"; // columna imagen
-                                    echo "<a  href=album.php?id=";
+                                    echo "<a  href=FotosController.php?opt=fotos&id=";
                                     echo $id;
                                     echo "&nombre=";
                                     echo $nombre;
@@ -69,7 +69,7 @@
                             echo "</tr>";
                             echo "<tr>"; //fila de nombre
                                 echo "<td>"; //columna nombre
-                                    echo "<a  href=album.php?id=";
+                                    echo "<a  href=FotosController.php?opt=fotos&id=";
                                     echo $id;
                                     echo "&nombre=";
                                     echo $nombre;

@@ -37,7 +37,12 @@
 	    <!-- fin #menu -->
             <div id="contenido">
               <?php  
-                $numero = count($_GET);
+                session_start();
+                $listaF= $_SESSION["listaFotos"];
+                $nombre= $_SESSION["nombreAlbum"];
+                $id= $_SESSION["idAlbum"];
+                /*
+                $numero = count($_GET); 
                 $tags = array_keys($_GET);// obtiene los nombres de las varibles
                 $valores = array_values($_GET);// obtiene los valores de las varibles
 
@@ -45,7 +50,7 @@
                 for($i=0;$i<$numero;$i++){
                 $$tags[$i]=$valores[$i];
                 }
-                
+                */
                 
                 
               echo "<h2 class=title>";
@@ -54,7 +59,7 @@
               
               echo "<div class=\"post\">";
             
-                require_once('FotosController.php');             
+                //require_once('FotosController.php');             
                 $tam = count($listaF);
                 if($tam == 0){
                     echo "albumes vacios";
@@ -68,29 +73,21 @@
                     //    $nombre[1] = $nombre[1].".jpg\"";
                         
                     //    $image = mysql_fetch_assoc($nombre[1]);
-                        header("Content-type: $nombre[1]");
-                         echo $nombre[1];
+                    //    header("Content-type: $nombre[1]");
+                    //     echo $nombre[1];
                         if ($j == 1) echo "<tr>"; // fila general{
                         echo "<td>"; // columna elemento
                         echo "<table>";
                         echo "<tr>"; // fila imagen
                                 echo "<td>"; // columna imagen
-                                    echo "<a  href=album.php?id=";
-                                    echo $id;
-                                    echo "&nombre=";
-                                    echo "tara";//$nombre[2];
-                                    echo ">";
-                                    echo "<img src=images/folder.png width=80 height=80 alt= />";
+                                    echo "<a  href=fotos.php?id=$id&nombre=$nombre[0]>";
+                                    echo "<img src=fotos/$id.jpg width=80 height=80 alt= />";
                                     echo "</a>";                                    
                                 echo "</td>";
                             echo "</tr>";
                             echo "<tr>"; //fila de nombre
                                 echo "<td>"; //columna nombre
-                                    echo "<a  href=album.php?id=";
-                                    echo $id;
-                                    echo "&nombre=";
-                                    echo $nombre;
-                                    echo ">";
+                                    echo "<a  href=fotos.php?id=$id&nombre=$nombre>";
                                     echo "<p style=\"text-align: center\";>";
                                     echo $nombre[0];
                                     echo "</p>";
@@ -106,7 +103,7 @@
                             $j = 1;
                         }                            
                     }
-                    if (count($lista) % 7 != 0) echo "</tr>";
+                    if (count($listaF) % 7 != 0) echo "</tr>";
                     echo "</table>";
                             
                 }
