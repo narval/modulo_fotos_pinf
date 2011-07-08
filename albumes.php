@@ -39,138 +39,75 @@
                 <h2 class="title"><a href="a">Albumes </a></h2>
                <div class="post">
             <?php
+            //session_start();
+            
                 require_once('FotosController.php');             
                 $tam = count($lista);
+                
                 if($tam == 0){
-                    echo "hola";
+                    echo "albumes vacios";
                 } else{
-                    echo "<ul>";
-                    foreach($lista as $j){
-                        echo "<li><a  href=";
-                        echo "albumes.php";
-                        echo ">";
-                        echo $j;
-                        echo "</a></li>";
-                     }
-                     echo "</ul>";
-                            /*
+                      
+                    
+                    
                     echo "<table>";
-                    for($i = 1; $i <= ($tam / 7) + 1; $i++){
-                        echo "<tr>";
-                        if($i * 7 < $tam){
-                            for($j = 1; $j <= 7; $j++){
-                                echo "<td>";
-                                echo $lista[(($j - 1) * 7) + $i][2];
+                    $j = 1;                    
+                    foreach($lista as $id => $nombre){                                               
+                        if ($j == 1) echo "<tr>"; // fila general{
+                        echo "<td>"; // columna elemento
+                        echo "<table>";
+                        echo "<tr>"; // fila imagen
+                                echo "<td>"; // columna imagen
+                                    echo "<a  href=album.php?id=";
+                                    echo $id;
+                                    echo "&nombre=";
+                                    echo $nombre;
+                                    echo ">";
+                                    echo "<img src=images/folder.png width=80 height=80 alt= />";
+                                    echo "</a>";                                    
                                 echo "</td>";
-                            }      
-                        } else {
-                            for($j = 1; $j <= ($tam % 7); $j++){
-                                echo "<td>";
-                                echo $lista[(($i - 1) * 7) + $j][2];
+                            echo "</tr>";
+                            echo "<tr>"; //fila de nombre
+                                echo "<td>"; //columna nombre
+                                    echo "<a  href=album.php?id=";
+                                    echo $id;
+                                    echo "&nombre=";
+                                    echo $nombre;
+                                    echo ">";
+                                    echo "<p style=\"text-align: center\";>";
+                                    echo $nombre;
+                                    echo "</p>";
+                                    echo "</a>"; 
                                 echo "</td>";
-                            }
+                            echo "</tr>";
                             
-                        }
-                        echo "</tr>";
+                        echo "</td>";
+                        echo "</table>";
+                        $j++; 
+                        if ($j == 7){
+                            echo "</tr>";
+                            $j = 1;
+                        }                            
                     }
+                    if (count($lista) % 7 != 0) echo "</tr>";
                     echo "</table>";
-                            */
+                            
                 }
             ?> 
                </div>
             
-            <!--
-	    
-	      
-	      
-		<h3 class="title"><a href="http://localhost:8080/web/album.html">"Nombre del √?lbum" </a></h3>
-		<p class="meta">√?lbum: <a href="http://localhost:8080/web/enConstruccion.html">"Nuemro de fotos"</a> 
-		  &nbsp;&bull;&nbsp; <a href="#" class="comments">Fecha de creacion: 04/04/04</a></p>
-		
-		
-		  <td> <img src="images/chavo.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito1.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito3.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito4.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		</tr>
-		<tr>
-		  <td> <img src="images/fotito1.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito3.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito4.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito1.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		</tr>
-		<tr>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito3.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito4.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/Krishnamurti.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito3.jpg" width="80" height="80" alt="" /></td>
-		</tr>
-		<tr>
-		  <td> <img src="images/fotito4.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito1.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito3.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito4.jpg" width="80" height="80" alt="" /></td>
-		  <td> <img src="images/fotito2.jpg" width="80" height="80" alt="" /></td>
-		</tr>
-	      </table>
-			<p> Anteriores&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Siguientes </p>
-		  <h4 class="title"> √?lbunes: </h4>
-			<table>
-				<tr>
-				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
-				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
-				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
-				<td><img src="images/folder1.png" width="100" height="100" alt=""/></td>
-				<td><img src="images/folder1.png" width="100" height="100" alt="algo"/></td>
-				<td> M√°s √?lbunes </td>
-				</tr>
-			</table>
-		<div class="entry">
-		  
-		  
-		</div>
-	      </div>
-	      
-	      <div style="clear: both;">&nbsp;</div>
-            -->
+            
 	    </div>
 	    <!-- fin #content -->
 	    <div id="barlateral">
-	      <ul>
-		<li>
-		  <h2>Opciones</h2>
-		  <ul>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Crear √?lbum</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del √?lbum</a></li>
-			<li><a href="http://localhost:8080/web/enConstruccion.html">Agregar fotos</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Borrar foto</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Descargar √?lbum </a></li>
-		  </ul>
-		</li>
-		<li>
-		<!--  <h2>Personas en este √?lbum</h2> 
-			<div>
-				<ul>
-				 <li><a href="http://localhost:8080/web/enConstruccion.html">Mar√≠a Antonieta De Las Nieves</a></li>
-				 <li><a href="http://localhost:8080/web/enConstruccion.html">Jiddu Krishnamurti</a></li>
-				 <li><a href="http://localhost:8080/web/enConstruccion.html">Roberto G√≥mez Bola√±os</a></li>
-				 <li><a href="http://localhost:8080/web/enConstruccion.html">Carlos Villagran</a></li>
-				 <li><a href="http://localhost:8080/web/enConstruccion.html">Ver m√°s personas</a></li>
-				</ul>
-			</div>
-                  -->
+                <ul>
+                    <li>
+                        <h2>Opciones</h2>
+                        <ul>
+                            <li><a href="http://localhost:8080/web/enConstruccion.html">Agregar Album</a></li>
+                         </ul>
+                    </li>
+                </ul>
 	    </div>
 	    <!-- fin #barlateral -->
 	    <div style="clear: both;">&nbsp;</div>

@@ -1,5 +1,6 @@
 <?php
 require_once("ClassAlbum.php");
+require_once("ClassFoto.php");
 require_once("Album_Perfil.php");
 /*
  * Fachada logica para el modulo Gestion de Fotos
@@ -20,7 +21,7 @@ class FotosFachada {
         }
         return self::$instance;
     }
-    /**
+    /** Esta una pa cada uno. tas ?=O toy hablando sola ya lo borro?
      * Función que devuelve un array asociativo con los id's y nombres 
      * de los albumes dado el $user de un Perfil.
      * Si existe algún error devuelve NULL.
@@ -41,6 +42,17 @@ public function crearAlbumPerfil($nombre,$lugar,$usuario){
     RETURN TRUE;
     
 } 
+
+
+public function getNombresFotos($id_album){
+    $Album= new ClassAlbum($id_album);
+    $Album->cargarFotos();
+    if($lista=$Album->getFotos())
+            RETURN $lista;
+        RETURN NULL;
+    }
+    
+
  
 }
 ?>

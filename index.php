@@ -9,12 +9,12 @@
         <?php
         session_name('usuario');
         session_start();
-        echo $_SESSION['usuario'];
+  //      echo $_SESSION['usuario'];
         $lista=$_SESSION['fotos'];
-        echo $_SESSION['hola'];
+  //      echo $_SESSION['hola'];
         if(!isset($lista)) echo "no seteada";
         //echo "<html><head><meta http-equiv='refresh' content='0; URL=./FotosController.php?id=3'></head></html>";
-        echo $lista[1];
+   //     echo $lista[1];
         
         ?>
     </body>

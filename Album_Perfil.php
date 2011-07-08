@@ -21,17 +21,19 @@ class Album_Perfil extends ClassAlbum {
       $this->fotos= array();
     }
     }
-    /**
+   
+    /** Bueno en cada Album_entidad hay que colocar la funcion asi, se puede llamar igual solo que adentro ella 
+     * llama a la funcion de la BD q le corresponda ok
      * Devuelve un arreglo asociativo con el id y el nombre de cada album
      * dado el nombre de un usuario.
-     * Devuelve NULL si existió algun error.
+     * Devuelve NULL si existiï¿½ algun error.
      * @param string $user 
      * @return array() $idsNombres
      */
     public static function getListaAlbums($user){
         $A=AlbumMapper::getInstance();
         $idsNombres=NULL;
-        // Obtener la lista de id's de los albumes cuyo dueño es $user
+        // Obtener la lista de id's de los albumes cuyo dueï¿½o es $user
         if($listaIds= $A->getIdsAlbumPerfil($user)){
             $idsNombres=array();
             for($i=0; $i<count($listaIds);$i++){
@@ -46,7 +48,7 @@ class Album_Perfil extends ClassAlbum {
     }
 
     /**
-     * Función que crea un Album asociado a un Perfil
+     * Funciï¿½n que crea un Album asociado a un Perfil
      * devuelve TRUE si el Album ha sido creado.
      * @param string $user
      * @return boolean 

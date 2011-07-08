@@ -1,4 +1,3 @@
-
 <?php
 
 /**
@@ -107,7 +106,7 @@ class AlbumMapper {
             return TRUE;
         } 
     }
-    /**
+    /** 
      * Función que devuelve un array que contiene los ID de los albumes
      * de un Perfil cuyo $user (nombre de usuario) es dado.
      * Devuelve NULL si existió algun error.
@@ -129,7 +128,7 @@ class AlbumMapper {
         RETURN $idsAlbum;
     }
     
-    /**
+    /** 
      * Función que recibe un $id de album y devuelve el nombre del album 
      * asociado con ese $id.
      * Devuelve NULL si existio algun error o no existe el $id.
