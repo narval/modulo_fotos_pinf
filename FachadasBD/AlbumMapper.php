@@ -63,8 +63,8 @@ class AlbumMapper {
                 "('$nombre','$lugar')";
         $queryResult = mysql_query($sqlQuery);
         
-        // Si falló la operacion retornar -1
-        // sino, guardar el ultimo id generado para Album
+        /* Si falló la operacion retornar -1
+         * sino, guardar el ultimo id generado para Album */
         if ($queryResult == FALSE) {
             return -1;
         } else {
@@ -102,6 +102,20 @@ class AlbumMapper {
             return FALSE;
         }
     }
+    
+    public function existeAlbum($tipo,$nombre,$clave_dueno){
+        DataBase::getInstance();
+        $ok=FALSE;
+        switch ($tipo) {
+            case 'perfil':
+                $ok= existeAlbumPerfil()
+                break;
+
+            default:
+                break;
+        }
+     
+    }
     /**
      * Función que determina si existe un Perfil cuyo ID es $usuario
      * y posee un Album con nombre $nombre.
@@ -112,7 +126,6 @@ class AlbumMapper {
      * @return int 
      */
     public function existeAlbumPerfil($nombre,$usuario){
-        DataBase::getInstance();
         $sqlQuery="SELECT A.ID_Album 
                    FROM A pinf.Album, AP pinf.albumesdeperfil
                    WHERE A.ID=A.ID_Album AND '$user'=AP.ID_Perfil
