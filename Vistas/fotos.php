@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Cacatua por Manghoo</title>
+<title>Pinf</title>
 <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
@@ -9,7 +9,6 @@
 	<div id="encab">
 		<div id="logo">
 			<h1><a href="#">Pinf </a></h1>
-			<p>por Roraima</p>
 		</div>
 		<div id="busq">
 			<form method="get" action="">
@@ -37,19 +36,12 @@
 				<!-- fin #menu -->
 				<div id="contenido">
                                     <?php
-						$numero = count($_GET);
-                                                $tags = array_keys($_GET);// obtiene los nombres de las varibles
-                                                $valores = array_values($_GET);// obtiene los valores de las varibles
-
-                                                // crea las variables y les asigna el valor
-                                                for($i=0;$i<$numero;$i++){
-                                                $$tags[$i]=$valores[$i];
-                                                }
-                                              echo "<h2 class=title>";
-                                              echo $nombre;
-                                              echo "</h2>";
-						
-							echo "<img src=../fotos/$id.jpg width=550 height=550 alt= class=alignleft border />";
+                                    $nombre= $_GET["nombre"];
+                                    $id= $_GET["id"];
+                                    echo "<h2 class=title>";
+                                    echo $nombre;
+                                    echo "</h2>";
+                                    echo "<img src=prueba.php?id=$id width=550 height=550 alt= class=alignleft border />";
                                     ?>
 							<div class="movido">
 								<h4 class="title"> Personas que aparecen en esta foto: </h4>
