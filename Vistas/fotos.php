@@ -2,7 +2,7 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Cacatua por Manghoo</title>
-<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
 <div id="wrapper">
@@ -49,7 +49,7 @@
                                               echo $nombre;
                                               echo "</h2>";
 						
-							echo "<img src=fotos/$id.jpg width=550 height=550 alt= class=alignleft border />";
+							echo "<img src=../fotos/$id.jpg width=550 height=550 alt= class=alignleft border />";
                                     ?>
 							<div class="movido">
 								<h4 class="title"> Personas que aparecen en esta foto: </h4>
