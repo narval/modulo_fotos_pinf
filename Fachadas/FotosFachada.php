@@ -1,6 +1,6 @@
 <?php
-require_once("Clases/ClassAlbum.php");
-require_once("Clases/ClassFoto.php");
+require_once("../Clases/ClassAlbum.php");
+require_once("../Clases/ClassFoto.php");
 
 /*
  * Fachada logica para el modulo Gestion de Fotos

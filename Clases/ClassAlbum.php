@@ -1,5 +1,5 @@
 <?php
- require_once 'FachadasBD/AlbumMapper';
+ require_once '../FachadasBD/AlbumMapper.php';
 /**
  * Description of ClassAlbum
  *

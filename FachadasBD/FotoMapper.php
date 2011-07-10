@@ -6,7 +6,7 @@
  * del modulo de Fotos.
  * version 1.2
  */
-require_once('DataBase.php');
+require_once('../DataBase.php');
 // Falta hacer los updates
 class FotoMapper {
 

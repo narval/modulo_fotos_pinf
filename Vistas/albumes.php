@@ -2,7 +2,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Cacatua por Manghoo</title>
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
     <div id="wrapper">
@@ -40,11 +40,13 @@
                <div class="post">
             <?php
             session_start();
+            $_SESSION["k_username"]= "yo";
             $_SESSION["ente"]= "perfil"; // Por ahora
             //$lista= $_SESSION["fotos"];
-                require_once('Fachadas/FotosFachada');
+                require_once("../Fachadas/FotosFachada.php");
                 $F=FotosFachada::getInstance();
                 $lista=$F->getNombresAlbum($_SESSION["ente"],$_SESSION['k_username']);
+                
                 $tam = count($lista);
                 
                 if($tam == 0){
@@ -66,7 +68,7 @@
                                     echo "&nombre=";
                                     echo $nombre;
                                     echo ">";
-                                    echo "<img src=images/folder.png width=80 height=80 alt= />";
+                                    echo "<img src=../images/folder.png width=80 height=80 alt= />";
                                     echo "</a>";                                    
                                 echo "</td>";
                             echo "</tr>";

@@ -1,6 +1,6 @@
 <?php
-require_once('FotoMapper.php');
-require_once('ClassFoto.php');
+require_once('../FachadasBD/FotoMapper.php');
+
 /**
  * Description of ClassFoto
  *
