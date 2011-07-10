@@ -47,11 +47,11 @@ class FotoMapper {
     }
     
     /**
-     * Función que guarda los datos basicos del album en la BD
-     * devuelve el id del album, o -1 si existe algun error. 
+     * Función que guarda una Foto en la BD
+     * devuelve el id de la foto, o -1 si existe algun error. 
+     * @param string $album
      * @param string $nombre
-     * @param string $lugar
-     * @param string $usuario
+     * @param string $imagen
      * @return int idalbum
      */
     public function saveFotoPerfil($album, $nombre, $imagen) {
@@ -68,7 +68,7 @@ class FotoMapper {
         } else {
             $idalbum = mysql_insert_id();
         }
-
+        RETURN $idalbum;
     }
     /**
      * Función que determina si existe un Album cuyo ID es $album
