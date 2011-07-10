@@ -6,7 +6,7 @@
  * del modulo de Fotos.
  * version 1.2
  */
-require_once('DataBase.php');
+require_once('../DataBase.php');
 // Falta hacer los updates
 class AlbumMapper {
 
@@ -211,7 +211,7 @@ class AlbumMapper {
         $tabla= "";
         $tipo_clave= "";
         switch ($tipo) {
-            case 'perfil':
+            case "perfil":
                 $tabla= "pinf.albumesdeperfil";
                 $tipo_clave="ID_Perfil";
                 break;
@@ -231,8 +231,8 @@ class AlbumMapper {
                 echo "No existe ese tipo de entidad para la funcion getIds";
                 break;
         }
-        $sqlQuery= "SELECT ID_Album FROM '$tabla'
-                    WHERE '$tipo_clave'='$clave'";
+        $sqlQuery= "SELECT ID_Album FROM ".$tabla."
+                    WHERE ".$tipo_clave."='$clave'";
         $queryResult = mysql_query($sqlQuery);
          if (!$queryResult) {
             RETURN NULL;
@@ -241,6 +241,7 @@ class AlbumMapper {
         while ($row = mysql_fetch_array($queryResult, MYSQL_ASSOC)) {
             $idsAlbum[]=$row["ID_Album"];
         }
+        
         RETURN $idsAlbum;
     }
     
