@@ -38,10 +38,11 @@
             <div id="contenido">
               <?php  
                 session_start();
+                /*
                 $listaF= $_SESSION["listaFotos"];
                 $nombre= $_SESSION["nombreAlbum"];
                 $id= $_SESSION["idAlbum"];
-                /*
+                */
                 $numero = count($_GET); 
                 $tags = array_keys($_GET);// obtiene los nombres de las varibles
                 $valores = array_values($_GET);// obtiene los valores de las varibles
@@ -50,8 +51,6 @@
                 for($i=0;$i<$numero;$i++){
                 $$tags[$i]=$valores[$i];
                 }
-                */
-                
                 
               echo "<h2 class=title>";
               echo $nombre;
@@ -59,7 +58,10 @@
               
               echo "<div class=\"post\">";
             
-                //require_once('FotosController.php');             
+                require_once("../Fachadas/FotosFachada.php");
+                $F=FotosFachada::getInstance();
+                $listaF=$F->getNombresFotos($id);
+                
                 $tam = count($listaF);
                 if($tam == 0){
                     echo "albumes vacios";

@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Cacatua por Manghoo</title>
+    <title>Pinf</title>
     <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
@@ -9,7 +9,7 @@
       <div id="encab">
 	<div id="logo">
 	  <h1><a href="#">Pinf </a></h1>
-	  <p>por Roraima</p>
+	 
 	</div>
 	<div id="busq">
 	  <form method="get" action="">
@@ -42,15 +42,18 @@
             session_start();
             $_SESSION["k_username"]= "yo";
             $_SESSION["ente"]= "perfil"; // Por ahora
+            $_SESSION["clave_ente"]= "yo";
             //$lista= $_SESSION["fotos"];
+            // Si ente = "perfil" y $_SESSION["k_username"]= "yo" != $_SESSION["clave_ente"]= "yo" y admin==false
+            // verificar la seguridad
                 require_once("../Fachadas/FotosFachada.php");
                 $F=FotosFachada::getInstance();
-                $lista=$F->getNombresAlbum($_SESSION["ente"],$_SESSION['k_username']);
+                $lista=$F->getNombresAlbum($_SESSION["ente"],$_SESSION['clave_ente']);
                 
                 $tam = count($lista);
                 
                 if($tam == 0){
-                    echo "albumes vacios";
+                    echo "No existen albumes para mostrar.";
                 } else{
                       
                     
@@ -63,7 +66,7 @@
                         echo "<table>";
                         echo "<tr>"; // fila imagen
                                 echo "<td>"; // columna imagen
-                                    echo "<a  href=FotosController.php?opt=fotos&id=";
+                                    echo "<a  href=album.php?id=";
                                     echo $id;
                                     echo "&nombre=";
                                     echo $nombre;
@@ -74,7 +77,7 @@
                             echo "</tr>";
                             echo "<tr>"; //fila de nombre
                                 echo "<td>"; //columna nombre
-                                    echo "<a  href=FotosController.php?opt=fotos&id=";
+                                    echo "<a  href=album.php?id=";
                                     echo $id;
                                     echo "&nombre=";
                                     echo $nombre;
