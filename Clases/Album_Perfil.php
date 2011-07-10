@@ -1,6 +1,6 @@
 <?php
-require_once('AlbumMapper.php');
-require_once('ClassAlbum.php');
+require_once('FachadasBD/AlbumMapper.php');
+require_once('FachadasBD/ClassAlbum.php');
 /**
  * Description of Album_Perfil
  *
@@ -22,30 +22,7 @@ class Album_Perfil extends ClassAlbum {
     }
     }
    
-    /** Bueno en cada Album_entidad hay que colocar la funcion asi, se puede llamar igual solo que adentro ella 
-     * llama a la funcion de la BD q le corresponda ok
-     * Devuelve un arreglo asociativo con el id y el nombre de cada album
-     * dado el nombre de un usuario.
-     * Devuelve NULL si existi� algun error.
-     * @param string $user 
-     * @return array() $idsNombres
-     */
-    public static function getListaAlbums($user){
-        $A=AlbumMapper::getInstance();
-        $idsNombres=NULL;
-        // Obtener la lista de id's de los albumes cuyo due�o es $user
-        if($listaIds= $A->getIdsAlbumPerfil($user)){
-            $idsNombres=array();
-            for($i=0; $i<count($listaIds);$i++){
-                $id= $listaIds[$i];
-                $idsNombres[$id]=
-                            $A->getNombreAlbumPerfil($id);
-                if(!($idsNombres[$id]))
-                    RETURN NULL;
-            }
-        }
-        RETURN $idsNombres;
-    }
+   
 
     /**
      * Funci�n que crea un Album asociado a un Perfil

@@ -1,5 +1,5 @@
 <?php
-
+ require_once 'FachadasBD/AlbumMapper';
 /**
  * Description of ClassAlbum
  *
@@ -32,6 +32,29 @@
         RETURN $this->fotos;
     }
     
+     /** 
+     * Devuelve un arreglo asociativo con el id y el nombre de cada album
+     * dado el ente a consultar y su ID.
+     * Devuelve NULL si existio algun error.
+     * @param string $clave 
+     * @return array() $idsNombres
+     */
+    public static function getListaAlbums($tipo_ente,$clave){
+        $A=AlbumMapper::getInstance();
+        $idsNombres=NULL;
+        // Obtener la lista de id's de los albumes cuyo dueno es $tipo_ente
+        if($listaIds= $A->getIdsAlbum($tipo_ente,$clave)){
+            $idsNombres=array();
+            for($i=0; $i<count($listaIds);$i++){
+                $id= $listaIds[$i];
+                $idsNombres[$id]=
+                            $A->getNombreAlbum($id);
+                if(!($idsNombres[$id]))
+                    RETURN NULL;
+            }
+        }
+        RETURN $idsNombres;
+    }
 }
 
 ?>

@@ -40,8 +40,11 @@
                <div class="post">
             <?php
             session_start();
-            $lista= $_SESSION["fotos"];
-                //require_once('FotosController.php');             
+            $_SESSION["ente"]= "perfil"; // Por ahora
+            //$lista= $_SESSION["fotos"];
+                require_once('Fachadas/FotosFachada');
+                $F=FotosFachada::getInstance();
+                $lista=$F->getNombresAlbum($_SESSION["ente"],$_SESSION['k_username']);
                 $tam = count($lista);
                 
                 if($tam == 0){
