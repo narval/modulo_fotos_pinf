@@ -77,12 +77,21 @@ class AlbumMapper {
             case 'perfil':
                 $ok= saveAlbumPerfil($idalbum,$clave_dueno);
                 break;
-
+            case 'grupo':
+                $ok= saveAlbumGrupo($idalbum,$clave_dueno);
+                break;
+            case 'evento':
+                $ok= saveAlbumEvento($idalbum,$clave_dueno);
+                break;
+            case 'noticia':
+                $ok= saveAlbumNoticia($idalbum,$clave_dueno);
+                break;
             default:
+                echo "No existe ese tipo de entidad para la funcion saveAlbum";
                 break;
         }
         
-         if ($ok) {
+        if ($ok) {
             return $idalbum;
         } else {
             return -1;
@@ -90,7 +99,7 @@ class AlbumMapper {
         
     }
   
-    public function saveAlbumPerfil($nombre,$usuario) {
+    public function saveAlbumPerfil($idalbum,$usuario) {
         // Asignar el Album al Perfil dueño del mismo    
         $sqlQuerry = "INSERT INTO pinf.albumesdeperfil VALUES" .
                 "('$idalbum','$usuario')";
@@ -102,19 +111,67 @@ class AlbumMapper {
             return FALSE;
         }
     }
+        public function saveAlbumGrupo($idalbum,$idgrupo) {
+        // Asignar el nuevo Album al Grupo dueño del mismo    
+        $sqlQuerry = "INSERT INTO pinf.grupo_album VALUES" .
+                "('$idgrupo','$idalbum')";
+        $queryResult = mysql_query($sqlQuery);
+
+         if ($queryResult) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function saveAlbumEvento($idalbum, $idevento) {
+        // Asignar el nuevo Album al Evento dueño del mismo    
+        $sqlQuerry = "INSERT INTO pinf.evento_album VALUES" .
+                "('$idevento', '$idalbum')";
+        $queryResult = mysql_query($sqlQuery);
+
+         if ($queryResult) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
+    public function saveAlbumNoticia($idalbum, $idnoticia) {
+        // Asignar el nuevo Album a la Noticia dueña del mismo    
+        $sqlQuerry = "INSERT INTO pinf.noticia_album VALUES" .
+                "('$idnoticia','$idalbum')";
+        $queryResult = mysql_query($sqlQuery);
+
+       if ($queryResult) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
     
+    /**
+     * Función que determina si existe un ente cuyo ID es $uclave_dueno
+     * y posee un Album con nombre $nombre.
+     * Devuelve TRUE si existe el Album, FALSE si no existe
+     * y -1 si existió algun error. 
+     * @param string $tipo es "perfil" "grupo" "evento" "noticia"...
+     * @param string $nombre
+     * @param string $usuario
+     * @return int 
+     */
     public function existeAlbum($tipo,$nombre,$clave_dueno){
         DataBase::getInstance();
         $ok=FALSE;
         switch ($tipo) {
             case 'perfil':
-                $ok= existeAlbumPerfil()
+                $ok= existeAlbumPerfil($nombre,$clave_dueno);
                 break;
 
             default:
                 break;
         }
-     
+     RETURN $ok;
     }
     /**
      * Función que determina si existe un Perfil cuyo ID es $usuario
@@ -141,17 +198,41 @@ class AlbumMapper {
             return TRUE;
         } 
     }
+    
     /** 
      * Función que devuelve un array que contiene los ID de los albumes
-     * de un Perfil cuyo $user (nombre de usuario) es dado.
+     * de una entidad cuyo ID o clave es dado.
      * Devuelve NULL si existió algun error.
      * @param string $user
      * @return array() 
      */
-    public function getIdsAlbumPerfil($user){
+    public function getIdsAlbum($tipo,$clave){
         DataBase::getInstance();
-        $sqlQuery= "SELECT ID_Album FROM pinf.albumesdeperfil
-                    WHERE ID_Perfil='$user'";
+        $tabla= "";
+        $tipo_clave= "";
+        switch ($tipo) {
+            case 'perfil':
+                $tabla= "pinf.albumesdeperfil";
+                $tipo_clave="ID_Perfil";
+                break;
+            case 'grupo':
+                $tabla= "pinf.grupo_album";
+                $tipo_clave="ID_Grupo";
+                break;
+            case 'evento':
+                $tabla= "pinf.evento_album";
+                $tipo_clave="ID_Evento";
+                break;
+            case 'noticia':
+                $tabla= "pinf.noticia_album";
+                $tipo_clave="ID_Noticia";
+                break;
+            default:
+                echo "No existe ese tipo de entidad para la funcion getIds";
+                break;
+        }
+        $sqlQuery= "SELECT ID_Album FROM '$tabla'
+                    WHERE '$tipo_clave'='$clave'";
         $queryResult = mysql_query($sqlQuery);
          if (!$queryResult) {
             RETURN NULL;
@@ -170,7 +251,7 @@ class AlbumMapper {
      * @param int $id
      * @return string 
      */
-    public function getNombreAlbumPerfil($id){
+    public function getNombreAlbum($id){
         DataBase::getInstance();
         $sqlQuery= "SELECT nombre FROM pinf.album
                     WHERE ID='$id'";
@@ -185,86 +266,7 @@ class AlbumMapper {
     }
     
     
-    public function saveAlbumGrupo($nombre, $lugar, $idgrupo) {
-        DataBase::getInstance();
-// Agregar Album en la tabla Album de la BD
-        $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
-                "('$nombre','$lugar')";
-        $queryResult = mysql_query($sqlQuery);
-// Si falló la operacion retornar -1
-// sino, guardar el ultimo id generado para Album
-        $idalbum = 0;
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            $idalbum = mysql_insert_id();
-        }
 
-// Asignar el nuevo Album al Grupo dueño del mismo    
-        $sqlQuerry = "INSERT INTO pinf.grupo_album VALUES" .
-                "('$idgrupo',LAST_INSERT_ID())";
-        $queryResult = mysql_query($sqlQuery);
-
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            return $idalbum;
-        }
-    }
-
-    public function saveAlbumEvento($nombre, $lugar, $idevento) {
-        DataBase::getInstance();
-// Agregar Album en la tabla Album de la BD
-        $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
-                "('$nombre','$lugar')";
-        $queryResult = mysql_query($sqlQuery);
-// Si falló la operacion retornar -1
-// sino, guardar el ultimo id generado para Album
-        $idalbum = 0;
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            $idalbum = mysql_insert_id();
-        }
-
-// Asignar el nuevo Album al Evento dueño del mismo    
-        $sqlQuerry = "INSERT INTO pinf.evento_album VALUES" .
-                "('$idevento', LAST_INSERT_ID())";
-        $queryResult = mysql_query($sqlQuery);
-
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            return $idalbum;
-        }
-    }
-
-    public function saveAlbumNoticia($nombre, $lugar, $idnoticia) {
-        DataBase::getInstance();
-// Agregar Album en la tabla Album de la BD
-        $sqlQuery = "INSERT INTO pinf.Album(nombre,lugar) VALUES" .
-                "('$nombre','$lugar')";
-        $queryResult = mysql_query($sqlQuery);
-// Si falló la operacion retornar -1
-// sino, guardar el ultimo id generado para Album
-        $idalbum = 0;
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            $idalbum = mysql_insert_id();
-        }
-
-// Asignar el nuevo Album a la Noticia dueña del mismo    
-        $sqlQuerry = "INSERT INTO pinf.noticia_album VALUES" .
-                "('$idnoticia',LAST_INSERT_ID())";
-        $queryResult = mysql_query($sqlQuery);
-
-        if ($queryResult == FALSE) {
-            return -1;
-        } else {
-            return $idalbum;
-        }
-    }
 
     public function saveFotoMuro($idalbum, $nombre, $imagen, $idmuro) {
         DataBase::getInstance();
