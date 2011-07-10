@@ -8,20 +8,28 @@ include_once('FotosFachada.php');
 session_start();
 // Por ahora supongamos que solo existe perfil
 
-$_SESSION['usuario']= 'yo';
+$_SESSION['k_username']= 'yo';
 
-//$_SESSION['fotos']= $hola;
+if(array_key_exists("opt", $_GET) && $_GET["opt"]="fotos"){
+    $F=FotosFachada::getInstance();
+    $listaF=$F->getNombresFotos($_GET["id"]);
+    $_SESSION["nombreAlbum"]= $_GET["nombre"];
+    $_SESSION["idAlbum"]= $_GET["id"];
+    $_SESSION["listaFotos"]= $listaF;
+    echo "<meta http-equiv='refresh' content='0; URL=./album.php'>";
+}
 
-/* if(!array_key_exists("tipo",$_GET))
-        echo "Error al llamar al controlador debes especificar la variable tipo";
+        
+//$_GET["tipo"]= "perfil";
 
-    switch ($_GET['tipo']) {
+ //if(!array_key_exists("tipo",$_GET))
+   //     echo "Error al llamar al controlador debes especificar la variable tipo";
+
+    switch ("perfil") {
     case 'perfil':
-        echo "hola!!!!!!!!!!!!!!!!!!!";
         $F=FotosFachada::getInstance();
-        $_SESSION['fotos']=$F->getNombresAlbumPerfil($_SESSION['usuario']);
-        $_SESSION['hola']="hola";
-        echo "hola!!!!!!!!!!!!!!!!!!!";
+        $_SESSION['fotos']=$F->getNombresAlbumPerfil($_SESSION['k_username']);
+        echo "<meta http-equiv='refresh' content='10; URL=./albumes.php'>";
         break;
     case 'grupo':
         break;
@@ -33,13 +41,6 @@ $_SESSION['usuario']= 'yo';
     default:
         break;
 }  
-*/
-
-$F=FotosFachada::getInstance();
-$lista=$F->getNombresAlbumPerfil($_SESSION['usuario']);
-$listaF=$F->getNombresFotos(4);
-
- //echo "<meta http-equiv='refresh' content='4; URL=./albumes.php'>";
-       
+     
  
 ?>
