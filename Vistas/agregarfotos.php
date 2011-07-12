@@ -2,7 +2,7 @@
     <?php
     include('../formatoPagina/encabezado.php');
     ?>
-    <form enctype="multipart/form-data" action="../Vistas/agregarfotosC.php" method="POST">
+    <form enctype="multipart/form-data" action="../Controladores/agregarfotosC.php" method="POST">
         <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
         <?php
         echo "<input type=hidden name=id_album value=" . $_GET['id'] . " />";
