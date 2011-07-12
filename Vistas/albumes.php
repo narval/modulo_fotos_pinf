@@ -40,9 +40,9 @@
                             <div class="post">
                                 <?php
                                 session_start();
-                                $_SESSION["k_username"] = "simon";
+                                $_SESSION["k_username"] = "yo";
                                 $_SESSION["entidad"] = "perfil"; // Por ahora
-                                $_SESSION["clave_entidad"] = "Jenni";
+                                $_SESSION["clave_entidad"] = "yo";
                                 //$lista= $_SESSION["fotos"];
                                 // Si ente = "perfil" y $_SESSION["k_username"]= "yo" != $_SESSION["clave_ente"]= "yo" y admin==false
                                 // verificar la seguridad
