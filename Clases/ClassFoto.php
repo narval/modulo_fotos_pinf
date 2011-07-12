@@ -9,10 +9,11 @@ require_once('../FachadasBD/FotoMapper.php');
 class ClassFoto {
     private $nombre;
     private $imagen;
+    private $id;
     
     public function __construct($nombre,$imagen) {
         $this->nombre=$nombre;
-        $this->imagen= imagen;
+        $this->imagen= $imagen;
     }
     
    // public function __construct($nombre) {
@@ -49,23 +50,18 @@ class ClassFoto {
         RETURN $idsNombres;
     }
 
-    /**
-     * Funci�n que crea un Album asociado a un Perfil
-     * devuelve TRUE si el Album ha sido creado.
-     * @param string $user
-     * @return boolean 
-     */    
-    public function crearFoto($album){
+   
+    public function guardarFoto($idAlbum){
         $A=FotoMapper::getInstance();
         $ok=0;
-        // Si la persona ya tiene un Album con el nombre dado, concatenarle "(1)"
-        while(($ok=($A::existeFotoPerfil(this.nombre,$user))) && $ok!=-1){
+        // Si la persona ya tiene una foto con el nombre dado, concatenarle "(1)"
+        while(($ok=($A::existeFotoAlbum($idAlbum))) && $ok!=-1){
             $this->nombre= $this->nombre."(1)";
         }
         if ($ok==-1)
             RETURN FALSE;
-        // Guardar el Album en la base de datos
-        $this->id= $A::saveFotoPerfil($this->album, $this->nombre, $this->imagen);
+        // Guardar la foto en la base de datos
+        $this->id= $A::saveFoto($idAlbum, $this->nombre, $this->imagen);
         if($this->id==-1)
                 RETURN FALSE;
         RETURN TRUE;

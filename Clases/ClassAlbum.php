@@ -32,9 +32,14 @@
         RETURN $this->fotos;
     }
     
+    public function agregarFoto($nombreFoto, $imagen){
+        $foto= new ClassFoto($nombre, $imagen);
+        $foto->guardarFoto($this->id);  
+    }
+    
      /** 
      * Devuelve un arreglo asociativo con el id y el nombre de cada album
-     * dado el ente a consultar y su ID.
+     * dado el ente propietario de los albumes y su ID.
      * Devuelve NULL si existio algun error.
      * @param string $clave 
      * @return array() $idsNombres
