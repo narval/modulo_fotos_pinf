@@ -1,15 +1,19 @@
+<?php 
+session_name("Fotos");
+session_start();
+?>
+
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Pinf</title>
-    <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
     <div id="wrapper">
       <div id="encab">
 	<div id="logo">
 	  <h1><a href="#">Pinf </a></h1>
-	  
 	</div>
 	<div id="busq">
 	  <form method="get" action="">
@@ -37,7 +41,6 @@
 	    <!-- fin #menu -->
             <div id="contenido">
               <?php  
-                session_start();
                 /*
                 $listaF= $_SESSION["listaFotos"];
                 $nombre= $_SESSION["nombreAlbum"];
@@ -57,39 +60,30 @@
               echo "</h2>";
               
               echo "<div class=\"post\">";
-            
                 require_once("../Fachadas/FotosFachada.php");
                 $F=FotosFachada::getInstance();
                 $listaF=$F->getNombresFotos($id);
-                
                 $tam = count($listaF);
                 if($tam == 0){
                     echo "albumes vacios";
                 } else{
-                    echo $listaF[3]["nombre"];
-                    
-                    
                     echo "<table>";
                     $j = 1;                    
                     foreach($listaF as $id => $nombre){
-                    //    $nombre[1] = $nombre[1].".jpg\"";
-                        
-                    //    $image = mysql_fetch_assoc($nombre[1]);
-                    //    header("Content-type: $nombre[1]");
-                    //     echo $nombre[1];
                         if ($j == 1) echo "<tr>"; // fila general{
                         echo "<td>"; // columna elemento
                         echo "<table>";
                         echo "<tr>"; // fila imagen
                                 echo "<td>"; // columna imagen
-                                    echo "<a  href=fotos.php?id=$id&nombre=$nombre[0]>";
-                                    echo "<img src=fotos/$id.jpg width=80 height=80 alt= />";
+                                    $_SESSION["var".$id.""] = $listaF[$id]["imagen"];
+                                    echo "<a  href=fotos.php?id=".$id."&nombre=$nombre[0]>";
+                                    echo "<img src=prueba.php?id=".$id." width=80 height=80 alt= />";
                                     echo "</a>";                                    
                                 echo "</td>";
                             echo "</tr>";
                             echo "<tr>"; //fila de nombre
                                 echo "<td>"; //columna nombre
-                                    echo "<a  href=fotos.php?id=$id&nombre=$nombre>";
+                                    echo "<a  href=fotos.php?id=".$id."&nombre=$nombre[0]>";
                                     echo "<p style=\"text-align: center\";>";
                                     echo $nombre[0];
                                     echo "</p>";
