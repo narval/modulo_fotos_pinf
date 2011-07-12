@@ -1,7 +1,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Cacatua por Manghoo</title>
+    <title>Pinf</title>
     <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
   </head>
   <body>
@@ -9,7 +9,7 @@
       <div id="encab">
 	<div id="logo">
 	  <h1><a href="#">Pinf </a></h1>
-	  <p>por Roraima</p>
+	  
 	</div>
 	<div id="busq">
 	  <form method="get" action="">
@@ -66,7 +66,7 @@
                 if($tam == 0){
                     echo "albumes vacios";
                 } else{
-                    
+                    echo $listaF[3]["nombre"];
                     
                     
                     echo "<table>";
