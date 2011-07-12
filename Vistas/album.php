@@ -182,13 +182,14 @@ session_start();
 		  <h2>Opciones</h2>
                 </li>
               </ul>
-		  <ul>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del Album</a></li>
-                    <li><a href="http://localhost:8080/web/enConstruccion.html">Agregar fotos</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Borrar foto</a></li>
-		    <li><a href="http://localhost:8080/web/enConstruccion.html">Descargar Album </a></li>
-		  </ul>
-		
+                <?php
+		  echo "<ul>";
+		    //<li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del Album</a></li>
+                    echo "<li><a href=agregarfotos.php?id=".$id.">Agregar fotos</a></li>";
+		    //<li><a href="http://localhost:8080/web/enConstruccion.html">Borrar foto</a></li>
+		    //<li><a href="http://localhost:8080/web/enConstruccion.html">Descargar Album </a></li>
+		  echo "</ul>";
+		?>
                 <h2>Personas en este Album</h2> 
 			<div>
 				<ul>
