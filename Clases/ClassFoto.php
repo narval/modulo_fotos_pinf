@@ -54,11 +54,13 @@ class ClassFoto {
     public function guardarFoto($idAlbum){
         $A=FotoMapper::getInstance();
         $ok=0;
+        
         // Si la persona ya tiene una foto con el nombre dado, concatenarle "(1)"
-        while(($ok=($A->existeFotoAlbum($this->nombre,$idAlbum))) && $ok!=-1){
+        while(($ok=($A->existeFotoAlbum($this->nombre,$idAlbum)))==1){
             $this->nombre= $this->nombre."(1)";
         }
-        if ($ok==-1)
+        echo $ok;
+        if ($ok==3)
             RETURN FALSE;
         // Guardar la foto en la base de datos
         $this->id= $A::saveFoto($idAlbum, $this->nombre, $this->imagen);

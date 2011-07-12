@@ -68,22 +68,22 @@ session_start();
                             } else {
                                 echo "<table>";
                                 $j = 1;
-                                foreach ($listaF as $id => $nombre) {
+                                foreach ($listaF as $ide => $nombre) {
                                     if ($j == 1)
                                         echo "<tr>"; // fila general{
                                     echo "<td>"; // columna elemento
                                     echo "<table>";
                                     echo "<tr>"; // fila imagen
                                     echo "<td>"; // columna imagen
-                                    $_SESSION["var" . $id . ""] = $listaF[$id]["imagen"];
-                                    echo "<a  href=fotos.php?id=" . $id . "&nombre=$nombre[0]>";
-                                    echo "<img src=genImagen.php?id=" . $id . " width=80 height=80 alt= />";
+                                    $_SESSION["var" . $ide . ""] = $listaF[$ide]["imagen"];
+                                    echo "<a  href=fotos.php?id=" . $ide . "&nombre=$nombre[0]>";
+                                    echo "<img src=genImagen.php?id=" . $ide . " width=80 height=80 alt= />";
                                     echo "</a>";
                                     echo "</td>";
                                     echo "</tr>";
                                     echo "<tr>"; //fila de nombre
                                     echo "<td>"; //columna nombre
-                                    echo "<a  href=fotos.php?id=" . $id . "&nombre=$nombre[0]>";
+                                    echo "<a  href=fotos.php?id=" . $ide . "&nombre=$nombre[0]>";
                                     echo "<p style=\"text-align: center\";>";
                                     echo $nombre[0];
                                     echo "</p>";
