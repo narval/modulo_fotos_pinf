@@ -47,14 +47,14 @@
             <?php
             session_start();
             $_SESSION["k_username"]= "yo";
-            $_SESSION["ente"]= "perfil"; // Por ahora
-            $_SESSION["clave_ente"]= "yo";
+            $_SESSION["entidad"]= "perfil"; // Por ahora
+            $_SESSION["clave_entidad"]= "yo";
             //$lista= $_SESSION["fotos"];
             // Si ente = "perfil" y $_SESSION["k_username"]= "yo" != $_SESSION["clave_ente"]= "yo" y admin==false
             // verificar la seguridad
                 require_once("../Fachadas/FotosFachada.php");
                 $F=FotosFachada::getInstance();
-                $lista=$F->getNombresAlbum($_SESSION["ente"],$_SESSION['clave_ente']);
+                $lista=$F->getNombresAlbum($_SESSION["entidad"],$_SESSION['clave_entidad']);
                 
                 $tam = count($lista);
                 

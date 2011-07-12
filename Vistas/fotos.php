@@ -41,7 +41,7 @@
                                     echo "<h2 class=title>";
                                     echo $nombre;
                                     echo "</h2>";
-                                    echo "<img src=prueba.php?id=$id width=550 height=550 alt= class=alignleft border />";
+                                    echo "<img src=genImagen.php?id=$id width=550 height=550 alt= class=alignleft border />";
                                     ?>
 							<div class="movido">
 								<h4 class="title"> Personas que aparecen en esta foto: </h4>
