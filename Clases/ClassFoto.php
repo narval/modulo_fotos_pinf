@@ -55,7 +55,7 @@ class ClassFoto {
         $A=FotoMapper::getInstance();
         $ok=0;
         // Si la persona ya tiene una foto con el nombre dado, concatenarle "(1)"
-        while(($ok=($A::existeFotoAlbum($idAlbum))) && $ok!=-1){
+        while(($ok=($A->existeFotoAlbum($this->nombre,$idAlbum))) && $ok!=-1){
             $this->nombre= $this->nombre."(1)";
         }
         if ($ok==-1)

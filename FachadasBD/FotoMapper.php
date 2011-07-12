@@ -85,7 +85,7 @@ class FotoMapper {
                    FROM A pinf.foto
                    WHERE '$id_album'=A.Album AND '$nombre_foto'=A.nombre";
         $queryResult = mysql_query($sqlQuery);
-        if (!queryResult) {
+        if (!$queryResult) {
             RETURN -1;
         }
         $row = mysql_fetch_assoc($queryResult);

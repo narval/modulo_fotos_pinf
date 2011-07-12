@@ -1,5 +1,6 @@
 <?php
  require_once '../FachadasBD/AlbumMapper.php';
+ require_once 'ClassFoto.php';
 /**
  * Description of ClassAlbum
  *
@@ -33,7 +34,7 @@
     }
     
     public function agregarFoto($nombreFoto, $imagen){
-        $foto= new ClassFoto($nombre, $imagen);
+        $foto= new ClassFoto($nombreFoto, $imagen);
         $foto->guardarFoto($this->id);  
     }
     
