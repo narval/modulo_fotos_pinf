@@ -1,5 +1,5 @@
 <html>
-    
+
 <?php
 include("../Clases/classAlbum.php");
 
@@ -16,7 +16,6 @@ if (isset($_POST["upload"])) {
     }
     $album= new ClassAlbum($_POST["id_album"]);
     $album->agregarFoto($nombreFoto, $content);
-    
 }
 ?>
 

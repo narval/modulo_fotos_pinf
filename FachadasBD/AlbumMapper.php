@@ -231,8 +231,8 @@ class AlbumMapper {
                 echo "No existe ese tipo de entidad para la funcion getIds";
                 break;
         }
-        $sqlQuery= "SELECT ID_Album FROM ".$tabla."
-                    WHERE ".$tipo_clave."='$clave'";
+        $sqlQuery= "SELECT ID_Album FROM {$tabla}
+                    WHERE {$tipo_clave}='$clave'";
         $queryResult = mysql_query($sqlQuery);
          if (!$queryResult) {
             RETURN NULL;

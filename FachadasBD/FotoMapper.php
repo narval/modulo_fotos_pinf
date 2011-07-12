@@ -56,10 +56,11 @@ class FotoMapper {
      */
     public function saveFoto($idalbum, $nombreFoto, $imagen) {
         DataBase::getInstance();
-        $idalbum = 0;
+        $idfoto = 0;
         // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.foto(album, nombre, imagen) VALUES" .
                 "('$idalbum','$nombreFoto','$imagen')";
+        
         $queryResult = mysql_query($sqlQuery);
         // Si falló la operacion retornar -1
         // sino, guardar el ultimo id generado para la foto
@@ -81,18 +82,22 @@ class FotoMapper {
      */
     public function existeFotoAlbum($nombre_foto,$id_album){
         DataBase::getInstance();
-        $sqlQuery="SELECT A.ID
-                   FROM A pinf.foto
-                   WHERE '$id_album'=A.Album AND '$nombre_foto'=A.nombre";
+        $sqlQuery="SELECT *
+                   FROM pinf.Foto
+                   WHERE album='$id_album' AND nombre='$nombre_foto'";
         $queryResult = mysql_query($sqlQuery);
-        if (!$queryResult) {
-            RETURN -1;
+        echo "hola";
+        echo $queryResult;
+        if (!($queryResult)) {
+            RETURN 3;
         }
+        echo $nombre_foto;
         $row = mysql_fetch_assoc($queryResult);
+        
         if (!($row)) {
-            return FALSE;
+            return 2;
         } else {
-            return TRUE;
+            return 1;
         } 
     }
     /** 
