@@ -1,5 +1,11 @@
 <html>
   <head>
+      <script type="text/javascript">
+        function mostrarAgregar()
+        {
+        document.getElementById("agreg").
+        }
+        </script>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Pinf</title>
     <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -111,11 +117,13 @@
                 <ul>
                     <li>
                         <h2>Opciones</h2>
-                        <ul>
-                            <li><a href="http://localhost:8080/web/enConstruccion.html">Agregar Album</a></li>
-                         </ul>
+                         <button type="button" onclick="mostrarAgregar()">Agregar Foto</button>
                     </li>
                 </ul>
+                
+                
+                <p id="agreg">This is a paragraph.</p>
+                
 	    </div>
 	    <!-- fin #barlateral -->
 	    <div style="clear: both;">&nbsp;</div>
