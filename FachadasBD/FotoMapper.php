@@ -4,7 +4,7 @@
  * Clase FotoMapper (Singleton)
  * Gestiona el acceso a la Base de Datos
  * del modulo de Fotos.
- * version 1.2
+ * version 3
  */
 require_once('../DataBase.php');
 // Falta hacer los updates
@@ -49,35 +49,35 @@ class FotoMapper {
     /**
      * Función que guarda una Foto en la BD
      * devuelve el id de la foto, o -1 si existe algun error. 
-     * @param string $album
-     * @param string $nombre
+     * @param string $idalbum
+     * @param string $nombreFoto
      * @param string $imagen
-     * @return int idalbum
+     * @return int $idFoto
      */
-    public function saveFotoPerfil($album, $nombre, $imagen) {
+    public function saveFoto($idalbum, $nombreFoto, $imagen) {
         DataBase::getInstance();
         $idalbum = 0;
         // Agregar Album en la tabla Album de la BD
         $sqlQuery = "INSERT INTO pinf.foto(album, nombre, imagen) VALUES" .
-                "('$album','$nombre','$imagen')";
+                "('$idalbum','$nombreFoto','$imagen')";
         $queryResult = mysql_query($sqlQuery);
         // Si falló la operacion retornar -1
-        // sino, guardar el ultimo id generado para Album
+        // sino, guardar el ultimo id generado para la foto
         if ($queryResult == FALSE) {
             return -1;
         } else {
-            $idalbum = mysql_insert_id();
+            $idFoto = mysql_insert_id();
         }
-        RETURN $idalbum;
+        RETURN $idFoto;
     }
     /**
-     * Función que determina si existe un Album cuyo ID es $album
-     * y posee una Foto con nombre $nombre.
+     * Función que determina si existe una Foto cuyo nombre es $nombre_foto
+     * dentro de un Album cuyo ID es $id_album.
      * Devuelve TRUE si existe el Album, FALSE si no existe
      * y -1 si existió algun error. 
-     * @param string $nombre
-     * @param string $album
-     * @return int 
+     * @param string $nombre_foto
+     * @param string $id_album
+     * @return boolean 
      */
     public function existeFotoAlbum($nombre_foto,$id_album){
         DataBase::getInstance();
@@ -96,10 +96,10 @@ class FotoMapper {
         } 
     }
     /** 
-     * Función que devuelve un array que contiene los ID de los albumes
-     * de un Perfil cuyo $user (nombre de usuario) es dado.
+     * Función que devuelve un array que contiene los ID de las fotos
+     * de un Album cuyo ID es $ID_album.
      * Devuelve NULL si existió algun error.
-     * @param string $user
+     * @param int $ID_album
      * @return array() 
      */
     public function getIdsFotoAlbum($ID_album){
@@ -110,11 +110,11 @@ class FotoMapper {
          if (!$queryResult) {
             RETURN NULL;
         }
-        $idsAlbum= array();
+        $idsFotos= array();
         while ($row = mysql_fetch_array($queryResult, MYSQL_ASSOC)) {
-            $idsAlbum[]=$row["ID"];
+            $idsFotos[]=$row["ID"];
         }
-        RETURN $idsAlbum;
+        RETURN $idsFotos;
     }
     
     /** 
@@ -122,7 +122,7 @@ class FotoMapper {
      * con el nombre y la imagen asociados con ese $id_foto.
      * Devuelve NULL si existio algun error o no existe el $id.
      * @param int $id_foto
-     * @return string 
+     * @return array() 
      */
     public function getNombreImagenFoto($id_foto){
         DataBase::getInstance();

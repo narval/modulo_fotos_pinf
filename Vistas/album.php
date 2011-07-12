@@ -65,7 +65,7 @@ session_start();
                 $listaF=$F->getNombresFotos($id);
                 $tam = count($listaF);
                 if($tam == 0){
-                    echo "albumes vacios";
+                    echo "No existen fotos para mostrar";
                 } else{
                     echo "<table>";
                     $j = 1;                    
@@ -77,7 +77,7 @@ session_start();
                                 echo "<td>"; // columna imagen
                                     $_SESSION["var".$id.""] = $listaF[$id]["imagen"];
                                     echo "<a  href=fotos.php?id=".$id."&nombre=$nombre[0]>";
-                                    echo "<img src=prueba.php?id=".$id." width=80 height=80 alt= />";
+                                    echo "<img src=genImagen.php?id=".$id." width=80 height=80 alt= />";
                                     echo "</a>";                                    
                                 echo "</td>";
                             echo "</tr>";
@@ -105,8 +105,7 @@ session_start();
                 }
             ?> 
                </div>
-            
-            
+                        
 	    </div>
             
             <!--
