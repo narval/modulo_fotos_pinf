@@ -1,5 +1,6 @@
 <html>
     <head>
+        <script type="text/javascript" src="jquery.js"></script>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Pinf</title>
         <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />

@@ -5,6 +5,30 @@ session_start();
 
 <html>
     <head>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript">
+            var muestra="false";
+        $(document).ready(function(){
+            /* $("#agregb").click(function(){
+                if(muestra=="false"){
+                    $("#agregf").show();
+                    muestra="true"; 
+                }else{
+                    $("#agregf").hide();
+                    muestra="false";
+                }});     */     
+            
+            $("#agregb").click(function() {
+                $("#agregf").slideToggle('slow', function() {
+                });
+            });
+            
+            
+            $("#agregf").hide();
+            
+        
+        });
+</script>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <title>Pinf</title>
         <link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -81,15 +105,7 @@ session_start();
                                     echo "</a>";
                                     echo "</td>";
                                     echo "</tr>";
-                                    echo "<tr>"; //fila de nombre
-                                    echo "<td>"; //columna nombre
-                                    echo "<a  href=fotos.php?id=" . $ide . "&nombre=$nombre[0]>";
-                                    echo "<p style=\"text-align: center\";>";
-                                    echo $nombre[0];
-                                    echo "</p>";
-                                    echo "</a>";
-                                    echo "</td>";
-                                    echo "</tr>";
+                                    
 
                                     echo "</td>";
                                     echo "</table>";
@@ -185,7 +201,17 @@ session_start();
                     <?php
                     echo "<ul>";
                     //<li><a href="http://localhost:8080/web/enConstruccion.html">Editar datos del Album</a></li>
-                    echo "<li><a href=agregarfotos.php?id=" . $id . ">Agregar fotos</a></li>";
+                    
+                    echo "<li><a  href=agregarfotos.php?id=" . $id . ">Agregar fotos</a></li>";
+                    echo "<button id=agregb>Click me</button>";
+                    
+                    echo "<form id=agregf enctype=multipart/form-data action=../Controladores/agregarfotosC.php method=POST>";
+                    echo "<input type=hidden name=MAX_FILE_SIZE value=300000000 />";
+                    echo "Choose a file to upload: <input name=foto type=file /><br />";
+                    echo "<input type=submit name=upload value=Upload File />";
+                    echo "</form>";
+                    
+                    
                     //<li><a href="http://localhost:8080/web/enConstruccion.html">Borrar foto</a></li>
                     //<li><a href="http://localhost:8080/web/enConstruccion.html">Descargar Album </a></li>
                     echo "</ul>";
